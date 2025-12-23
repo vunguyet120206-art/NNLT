@@ -1,0 +1,20 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files first (for better caching)
+COPY frontend/package.json ./
+COPY frontend/package-lock.json* ./
+
+# Install dependencies (use npm install if package-lock.json doesn't exist)
+RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+# Copy application code
+COPY frontend/ .
+
+# Expose port
+EXPOSE 3000
+
+# Start development server (will be overridden by docker-compose for dev)
+CMD ["npm", "run", "dev"]
+

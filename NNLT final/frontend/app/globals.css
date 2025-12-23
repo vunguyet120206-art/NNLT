@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html,
+  body {
+    @apply max-w-full overflow-x-hidden;
+  }
+
+  body {
+    @apply bg-gray-100 m-0 p-0;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-6xl mx-auto p-8;
+  }
+
+  .card {
+    @apply bg-white rounded-lg p-8 shadow-md mb-8;
+  }
+
+  .btn {
+    @apply px-6 py-3 border-none rounded cursor-pointer text-base transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-600 text-white hover:bg-gray-700;
+  }
+
+  .form-group {
+    @apply mb-6;
+  }
+
+  .form-group label {
+    @apply block mb-2 font-medium;
+  }
+
+  .form-group input {
+    @apply w-full p-3 border border-gray-300 rounded text-base focus:outline-none focus:border-primary;
+  }
+
+  .error {
+    @apply text-red-600 mt-2;
+  }
+
+  .success {
+    @apply text-green-600 mt-2;
+  }
+
+  .loading {
+    @apply text-center p-8;
+  }
+
+  /* Brush text color - keep numbers black */
+  .brush-black-text text {
+    fill: #000000 !important;
+    color: #000000 !important;
+  }
+
+  /* ECG Grid Pattern - 1mV : 40ms ratio */
+  .ecg-grid {
+    background-color: #ffffff;
+    background-image: 
+      /* Large grid lines - 200ms x 5mV (thicker) */
+      linear-gradient(to right, #d0d0d0 1px, transparent 1px),
+      linear-gradient(to bottom, #d0d0d0 1px, transparent 1px),
+      /* Small grid lines - 40ms x 1mV (thinner) */
+      linear-gradient(to right, #e8e8e8 0.5px, transparent 0.5px),
+      linear-gradient(to bottom, #e8e8e8 0.5px, transparent 0.5px);
+    background-size: 
+      200px 1px,  /* 200ms spacing for large grid */
+      1px 50px,   /* 5mV spacing for large grid */
+      40px 1px,   /* 40ms spacing for small grid */
+      1px 10px;   /* 1mV spacing for small grid (visual adjustment) */
+    background-position: 0 0;
+  }
+}
+
